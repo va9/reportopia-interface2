@@ -1,10 +1,18 @@
 import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 interface DataRow {
   id: string;
   publisher: string;
-  pageViews: number;
+  pageViews: string;
   percentage: number;
 }
 
@@ -25,67 +33,43 @@ export const DataTable = ({ data }: DataTableProps) => {
     }
   };
 
-  const sortedData = [...data].sort((a, b) => {
-    const aValue = a[sortField];
-    const bValue = b[sortField];
-    const modifier = sortDirection === "asc" ? 1 : -1;
-    
-    if (typeof aValue === "string") {
-      return aValue.localeCompare(bValue as string) * modifier;
-    }
-    return ((aValue as number) - (bValue as number)) * modifier;
-  });
-
   return (
-    <div className="overflow-x-auto rounded-lg border bg-white">
-      <table className="data-table">
-        <thead>
-          <tr>
-            <th
-              className="cursor-pointer hover:bg-gray-50"
-              onClick={() => handleSort("publisher")}
-            >
-              <div className="flex items-center gap-2">
-                Publisher
-                {sortField === "publisher" && (
-                  sortDirection === "asc" ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />
-                )}
-              </div>
-            </th>
-            <th
-              className="cursor-pointer hover:bg-gray-50"
-              onClick={() => handleSort("pageViews")}
-            >
-              <div className="flex items-center gap-2">
-                Page Views
-                {sortField === "pageViews" && (
-                  sortDirection === "asc" ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />
-                )}
-              </div>
-            </th>
-            <th
-              className="cursor-pointer hover:bg-gray-50"
-              onClick={() => handleSort("percentage")}
-            >
-              <div className="flex items-center gap-2">
-                Percentage
-                {sortField === "percentage" && (
-                  sortDirection === "asc" ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />
-                )}
-              </div>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {sortedData.map((row) => (
-            <tr key={row.id} className="hover:bg-gray-50 transition-colors">
-              <td>{row.publisher}</td>
-              <td>{row.pageViews.toLocaleString()}</td>
-              <td className="text-green-500">{row.percentage}%</td>
-            </tr>
+    <div className="w-full">
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead className="w-[300px]">Publisher</TableHead>
+            <TableHead>Page Views Valid</TableHead>
+            <TableHead>Page Views Foreground</TableHead>
+            <TableHead>Page Views Background</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {data.map((row) => (
+            <TableRow key={row.id}>
+              <TableCell className="font-medium">{row.publisher}</TableCell>
+              <TableCell>
+                <div className="flex items-center gap-2">
+                  <span>{row.pageViews}</span>
+                  <span className="text-green-500">{row.percentage}%</span>
+                </div>
+              </TableCell>
+              <TableCell>
+                <div className="flex items-center gap-2">
+                  <span>{row.pageViews}</span>
+                  <span className="text-green-500">{row.percentage}%</span>
+                </div>
+              </TableCell>
+              <TableCell>
+                <div className="flex items-center gap-2">
+                  <span>{row.pageViews}</span>
+                  <span className="text-green-500">{row.percentage}%</span>
+                </div>
+              </TableCell>
+            </TableRow>
           ))}
-        </tbody>
-      </table>
+        </TableBody>
+      </Table>
     </div>
   );
 };

@@ -1,30 +1,45 @@
 import { Header } from "@/components/Header";
 import { MetricCard } from "@/components/MetricCard";
 import { DataTable } from "@/components/DataTable";
+import { FilterBar } from "@/components/FilterBar";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "lucide-react";
 
 const mockData = [
   {
-    id: "1",
-    publisher: "JumpFeed",
-    pageViews: 100290,
+    id: "JumpFeed",
+    publisher: "JumpFeed (8CU8Q3SYV)",
+    pageViews: "100.29k",
     percentage: 99.40,
   },
   {
-    id: "2",
-    publisher: "SS - americanbenefitsa",
-    pageViews: 100290,
+    id: "americanbenefits",
+    publisher: "SS - americanbenefitsa...",
+    pageViews: "100.29k",
     percentage: 99.40,
   },
   {
-    id: "3",
+    id: "cdk",
     publisher: "CDK Global LLC",
-    pageViews: 100290,
+    pageViews: "100.29k",
     percentage: 99.40,
   },
   {
-    id: "4",
+    id: "cbs",
     publisher: "CBS Corporation",
-    pageViews: 100290,
+    pageViews: "100.29k",
+    percentage: 99.40,
+  },
+  {
+    id: "hbadx",
+    publisher: "HB_AdX - Buying",
+    pageViews: "100.29k",
+    percentage: 99.40,
+  },
+  {
+    id: "kobe",
+    publisher: "Kobe Shimbun",
+    pageViews: "100.29k",
     percentage: 99.40,
   },
 ];
@@ -33,8 +48,9 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
-      <main className="max-w-7xl mx-auto px-6 pt-24 pb-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <FilterBar />
+      <main className="max-w-[1600px] mx-auto px-6 pt-40 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6 mb-8">
           <MetricCard
             title="No. of Environments"
             value="100%"
@@ -59,21 +75,31 @@ const Index = () => {
             percentage={5.8}
             subValue="71.90k"
           />
+          <MetricCard
+            title="Ad Clicks - Affected"
+            value="70%"
+            percentage={5.8}
+            subValue="71.90k"
+          />
         </div>
 
-        <div className="bg-white rounded-lg p-6 shadow-sm">
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-xl font-semibold">Publisher Performance</h2>
+        <div className="bg-white rounded-lg shadow-sm">
+          <div className="flex justify-between items-center p-4 border-b">
             <div className="flex gap-4">
-              <select className="px-4 py-2 rounded-lg border bg-white">
-                <option>Daily Average</option>
-                <option>Total</option>
-              </select>
-              <select className="px-4 py-2 rounded-lg border bg-white">
-                <option>Sort by</option>
-                <option>Page Views</option>
-                <option>Percentage</option>
-              </select>
+              <Button variant="ghost" className="text-blue-600 hover:text-blue-700">
+                Daily Average
+              </Button>
+              <Button variant="ghost" className="text-gray-500">
+                Total
+              </Button>
+            </div>
+            <div className="flex items-center gap-3">
+              <Button variant="outline" size="sm" className="text-gray-600">
+                Show Heatmap Map for
+              </Button>
+              <Button variant="outline" size="sm" className="text-gray-600">
+                Sort by
+              </Button>
             </div>
           </div>
           <DataTable data={mockData} />
