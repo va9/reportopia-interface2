@@ -4,7 +4,7 @@ import { Plus, X } from "lucide-react";
 
 export const FilterBar = () => {
   return (
-    <div className="w-full px-6 py-4 bg-white/80 backdrop-blur-sm fixed top-16 z-30 border-b">
+    <div className="w-full px-6 py-4 bg-white/80 backdrop-blur-sm fixed top-16 z-40 border-b">
       <div className="max-w-[1600px] mx-auto space-y-4">
         <div className="flex items-center gap-4">
           <span className="text-gray-600 min-w-24">Dimensions</span>

@@ -3,7 +3,6 @@ import { MetricCard } from "@/components/MetricCard";
 import { DataTable } from "@/components/DataTable";
 import { FilterBar } from "@/components/FilterBar";
 import { Button } from "@/components/ui/button";
-import { Calendar } from "lucide-react";
 
 const mockData = [
   {
@@ -49,7 +48,7 @@ const Index = () => {
     <div className="min-h-screen bg-gray-50">
       <Header />
       <FilterBar />
-      <main className="max-w-[1600px] mx-auto px-6 pt-48 pb-12">
+      <main className="max-w-[1600px] mx-auto px-6 pt-52 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6 mb-8">
           <MetricCard
             title="No. of Environments"
