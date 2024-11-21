@@ -48,7 +48,7 @@ const Index = () => {
     <div className="min-h-screen bg-gray-50">
       <Header />
       <FilterBar />
-      <main className="max-w-[1600px] mx-auto px-6 pt-52 pb-12">
+      <main className="max-w-[1600px] mx-auto px-6 pt-[280px] pb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6 mb-8">
           <MetricCard
             title="No. of Environments"
